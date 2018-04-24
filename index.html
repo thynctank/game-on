@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style type="text/css" media="screen">
+      .list {
+        list-style: none;
+        padding-left: 0;
+        padding-right: 15px;
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+    </style>
+
+    <title>Mythic GME</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mythic GME</h1>
+      <form action="javascript:return false;" method="get" accept-charset="utf-8" class="row" id="lists">
+        <div class="col-md-4">
+          <label for="chaos-factor">Chaos Factor
+            <input type="text/submit/hidden/button" name="Chaos Factor" value="" id="chaos-factor" placeholder="Chaos Factor">
+          </label>
+          <button id="chaos-decrement">-</button>
+          <button id="chaos-increment">+</button>
+        </div>
+
+        <div class="col-md-4">
+          <label for="new-npc">New NPC
+            <input type="text/submit/hidden/button" name="New NPC" value="" id="new-npc" placeholder="New NPC">
+          </label>  
+          <ul id="npc-list" class="list">
+            <li class="row" id="npc-list-item-template">
+              <span class="col-md-11">Some NPC whose info is stored here in the page with lots of words</span>
+              <button class="pull-right">X</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <label for="new-thread">New Thread
+            <input type="text/submit/hidden/button" name="New Thread" value="" id="new-thread" placeholder="New Thread">
+          </label>  
+          <ul id="thread-list" class="list">
+            <li class="row list-template" id="thread-list-item-template">
+              <span class="col-md-11">Some thread whose info is stored here in the page with lots of words</span>
+              <button class="pull-right">X</button>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
