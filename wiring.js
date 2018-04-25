@@ -76,7 +76,7 @@
       var deleteButton;
       listItem = d.createElement('li');
       listItem.className = 'row';
-      listItem.innerHTML = '<span class="col-md-11">' + datum + '</span>';
+      listItem.innerHTML = '<span class="col-md-10">' + datum + '</span>';
       list.append(listItem)
       deleteButton = d.createElement('button');
       deleteButton.innerHTML = 'X';
