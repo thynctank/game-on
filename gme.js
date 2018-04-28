@@ -3,10 +3,11 @@ var gme = (function (d) {
     mode : 'default',
     chaosFactor : 5,
     npcList : [],
-    threadList : []
+    threadList : [],
+    sceneList: []
   };
 
-  var fields = ['chaosFactor', 'npcList', 'threadList'];
+  var fields = ['chaosFactor', 'npcList', 'threadList', 'sceneList'];
   
   fields.forEach(function(item) {
     if (localStorage[item]) {

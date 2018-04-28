@@ -5,27 +5,38 @@
     chaosDown = d.getElementById('chaos-decrement'),
     newNpcInput = d.getElementById('new-npc'),
     newThreadInput = d.getElementById('new-thread'),
+    newSceneInput = d.getElementById('new-scene'),
+    newSceneAdd = d.getElementById('new-scene-add'),
     npcList = d.getElementById('npc-list'),
+    sceneList = d.getElementById('scene-list'),
     threadList = d.getElementById('thread-list'),
-    localModel,
-    listItemTemplate;
+    localModel;
 
   //event wiring
   chaosUp.addEventListener('click', function (e) {
     localModel.chaosFactor = parseInt(localModel.chaosFactor) + 1;
     gme.apply(localModel);
-    setFields();
+    render();
   });
 
   chaosDown.addEventListener('click', function (e) {
     localModel.chaosFactor = parseInt(localModel.chaosFactor) - 1;
     gme.apply(localModel);
-    setFields();
+    render();
   });
+
+  newSceneAdd.addEventListener('click', function (e) {
+    if(newSceneInput.value) {
+      localModel.sceneList.push(newSceneInput.value);
+      gme.apply(localModel);
+      buildList('scene');
+      newSceneInput.value = '';
+    }
+  })
 
   newThreadInput.addEventListener('keyup', function (e) {
     //only add on Enter
-    if(e.keyCode === 13 && newThreadInput.value !== '') {
+    if(e.keyCode === 13 && newThreadInput.value) {
       localModel.threadList.push(newThreadInput.value);
       gme.apply(localModel);
       buildList('thread');
@@ -54,6 +65,7 @@
     var list,
       listItem,
       listData;
+
     switch (listName) {
       case 'npc':
         list = npcList;
@@ -64,7 +76,12 @@
         list = threadList;
         listData = localModel.threadList;
         break;
-      
+       
+      case 'scene':
+        list = sceneList;
+        listData = localModel.sceneList;
+        break;
+
       default:
         console.log('bad listName');
     }
@@ -78,22 +95,31 @@
       listItem.className = 'row';
       listItem.innerHTML = '<span class="col-md-10">' + datum + '</span>';
       list.append(listItem)
-      deleteButton = d.createElement('button');
-      deleteButton.innerHTML = 'X';
-      deleteButton.className = 'pull-right';
-      deleteButton.onclick = function () {
-        deleteItem(listName, index);
-      };
-      listItem.append(deleteButton);
+
+      if(list !== localModel.sceneList) {
+        deleteButton = d.createElement('button');
+        deleteButton.innerHTML = 'X';
+        deleteButton.className = 'pull-right';
+        deleteButton.onclick = function () {
+          deleteItem(listName, index);
+        };
+
+        listItem.append(deleteButton);
+      }
     })
   }
 
-  //init
-  function init() {
+  function render() {
     localModel = gme.apply();
     chaosInput.value = localModel.chaosFactor;
     buildList('npc');
     buildList('thread');
+    buildList('scene');
+  }
+
+  //init
+  function init() {
+    render();
   }
 
   init();

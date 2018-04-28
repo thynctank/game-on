@@ -19,6 +19,9 @@
         width: 3em;
         text-align: center;
       }
+      #new-scene-label {
+        display: block;
+      }
     </style>
 
     <title>Mythic GME</title>
@@ -26,10 +29,11 @@
   <body>
     <div class="container">
       <h1>Mythic GME</h1>
+
       <div class="row" id="lists">
         <div class="col-md-4">
           <label for="chaos-factor">Chaos Factor
-            <input type="text/submit/hidden/button" disabled="true" name="Chaos Factor" id="chaos-factor" value="5">
+            <input type="text" disabled="true" name="Chaos Factor" id="chaos-factor" value="5">
           </label>
           <button id="chaos-decrement">-</button>
           <button id="chaos-increment">+</button>
@@ -37,7 +41,7 @@
 
         <div class="col-md-4">
           <label for="new-npc">New NPC
-            <input type="text/submit/hidden/button" name="New NPC" value="" id="new-npc" placeholder="New NPC">
+            <input type="text" name="New NPC" value="" id="new-npc" placeholder="New NPC">
           </label>  
           <ul id="npc-list" class="list">
             <li class="row" id="list-item-template">
@@ -49,7 +53,7 @@
 
         <div class="col-md-4">
           <label for="new-thread">New Thread
-            <input type="text/submit/hidden/button" name="New Thread" value="" id="new-thread" placeholder="New Thread">
+            <input type="text" name="New Thread" value="" id="new-thread" placeholder="New Thread">
           </label>  
           <ul id="thread-list" class="list">
             <li class="row list-template">
@@ -59,8 +63,20 @@
           </ul>
         </div>
       </div>
-    </div>
 
+      <div class='row'>
+        <div class="col-md-4">
+          <label id="new-scene-label" for="new-scene">New Scene</label>  
+          <textarea id="new-scene" placeholder="New Scene" class="col-md-12" rows="4"></textarea>
+          <button id="new-scene-add" class="pull-right">Add</button>
+        </div>
+        <div class='col-md-8'>
+          <h4>All Scenes</h4>
+          <ul id="scene-list" class="list">
+          </ul>
+        </div>
+      </div>
+    </div>
     <script type='text/javascript' src="gme.js"></script>
     <script type='text/javascript' src="wiring.js"></script>
   </body>
